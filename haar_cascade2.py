@@ -15,6 +15,7 @@ motor.setup()
 turn.setup()
 turn.home()
 
+#move functions for the robot
 def forward():
 	turn.home()
 	print("go forward")
@@ -42,9 +43,9 @@ def left_forward():
 
 while True:
 	ret, frame = cap.read()
-
+	#read image in grayscale
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
+	#start Haar-cascade detection
 	hands = handCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 	num_hands = len(hands)
 
@@ -52,7 +53,7 @@ while True:
 		total += 1
 	else:
 		total = 0
-    
+    	#if no fist detected after a period of time, scan for the fist with the camera
     	if total > 15:
         	total = 0
         	camTurn.Current_x = 0
@@ -62,10 +63,12 @@ while True:
             		Thread(target = move_increase_x).start()
             		hands
             		num_hands
-    
+    	
 	for (x, y, w, h) in hands:
+		#draw rectangle around detected fist
 		cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
 		if x > 215 and x < 430
+	#move based on where fist is in relation to camera
             if camTurn.Current_x < 295:
                 Thread(target = left_forward).start()
 			elif camTurn.Current_x > 345
