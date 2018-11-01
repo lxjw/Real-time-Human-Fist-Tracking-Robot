@@ -1,5 +1,5 @@
 # Real-time Human Fist Tracking Robot
-Done in ACM project in collaboration with Manan Manan, Sai Pathuri, Daniel Zhang, and Gabriel Goetten
+Done in ACM project in collaboration with Manan Manan, Sai Pathuri, Daniel Zhang, Gabriel Goetten, and Sean Kennedy
 Uses open source code fron Sunfounder and OpenCV
 
 Purpose: Utilize a Haar-Cascade classifier to analyze and detect the position of a human fist in relation 
